@@ -2530,7 +2530,9 @@ AC_DEFUN([CURL_MAC_CFLAGS], [
     min=""
     if test -n "$IPHONEOS_DEPLOYMENT_TARGET"; then
       var="IPHONEOS_DEPLOYMENT_TARGET"
-    elif test -z "$(echo $CFLAGS $CC | grep m.*os.*-version-min)"; then
+    elif test -n "$MACOS_DEPLOYMENT_TARGET"; then
+      var="MACOS_DEPLOYMENT_TARGET"
+    elif elif test -z "$(echo $CFLAGS $CC | grep m.*os.*-version-min)"; then
       min="-mmacosx-version-min=10.8"
       CFLAGS="$CFLAGS $min"
     else
